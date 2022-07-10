@@ -15,7 +15,10 @@ export default function Inputfield() {
         if(wght === '' || hght === '') return;
         setWeight(Number(wght));
         setHeight(Number(hght));
-        setBmi(weight/((height/100)*(height/100)));
+        let bmi_value = (weight/((height/100)*(height/100)));
+        setBmi(Math.floor(bmi_value) );
+
+      
     }
   return (
     <>
