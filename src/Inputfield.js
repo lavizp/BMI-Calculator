@@ -15,7 +15,7 @@ export default function Inputfield() {
         if(wght === '' || hght === '') return;
         setWeight(Number(wght));
         setHeight(Number(hght));
-        setBmi(weight/(height*height));
+        setBmi(weight/((height/100)*(height/100)));
     }
   return (
     <>
@@ -24,7 +24,7 @@ export default function Inputfield() {
             <input type= "text" ref={weightRef}></input>
         </div>
         <div className="Input Height">
-            Input Weight in meter
+            Input Weight in cm
             <input type= "text" ref={heightRef}></input>
         </div>
         <button onClick={calculateBMI}>calculateBMI</button>
