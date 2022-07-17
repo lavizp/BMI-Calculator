@@ -8,15 +8,19 @@ export default function Inputfield() {
     const [height, setHeight] = useState();
     const [bmi, setBmi] = useState();
 
-    function calculateBMI(e)
+    const changeHandlerWeight = (evenFrom, eventObject) =>{
+        setWeight(eventObject.target.value);
+    }
+    const changeHandlerHeight = (evenFrom, eventObject) =>{
+        setHeight(eventObject.target.value);
+    }
+    const calculateBMI = () =>
     {
-        const wght = weightRef.current.value;
-        const hght = heightRef.current.value;
-        if(wght === '' || hght === '') return;
-        setWeight(Number(wght));
-        setHeight(Number(hght));
-        let bmi_value = (weight/((height/100)*(height/100)));
-        setBmi(Math.floor(bmi_value) );
+        if(weight && height)
+        {
+            setBmi(weight/height);
+
+        }
 
       
     }
@@ -24,14 +28,14 @@ export default function Inputfield() {
     <>
         <div className="Input weight">
             Input Weight in kg
-            <input type= "text" ref={weightRef}></input>
+            <input type= "text" onChange={(e) => changeHandlerWeight("weight",e)} />
         </div>
         <div className="Input Height">
             Input Weight in cm
-            <input type= "text" ref={heightRef}></input>
+            <input type= "text" onChange={(e) => changeHandlerHeight("height",e)} />
         </div>
         <button onClick={calculateBMI}>calculateBMI</button>
-        <p>{bmi}</p>
+        <p>The Bmi is, {bmi}</p>
     </>
   )
 }
